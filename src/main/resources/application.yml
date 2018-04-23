@@ -1,0 +1,29 @@
+server:
+  port: 9090
+
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://127.0.0.1:8761/eureka/
+
+zuul:
+  #Service will be mapped under the /api URI
+  prefix: /api
+#  Uncomment to disable auto-registering all services read from Eureka
+#  ignoredServices: '*'
+  routes:
+    test1:
+      path: /test1/**
+      url: http://httpbin.org
+    test2:
+      path: /test2/**
+      url: http://yahoo.com
+    test3:
+      path: /test3/**
+      url: http://google.com  
+    static:
+      path: /static/**
+
+spring:
+  application:
+    name: zuul-server
